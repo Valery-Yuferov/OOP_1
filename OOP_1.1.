@@ -17,6 +17,31 @@ class Student:
         else:
             return 'Ошибка' 
 
+def get_shelves():
+  num_shelf = input('Введите номер документа: ')
+  for key, value in directories.items():
+    if num_shelf in value:
+      return (f"Документ лежит на полке: {key}")
+  return 'Такого документа не существует'
+
+
+def average_grade(self, grade):
+        average_grade = []
+        courses = []
+        for key, value in self.grades.items():
+            average_grade += value
+            if key not in courses:
+                courses.append(key)
+            else:
+                courses += key
+        average = round((sum(average_grade)/len(average_grade)), 1)
+        if grade == 'grade':
+            return average
+        else grade == 'list courses':
+            return courses
+
+
+
 def __str__(self):
     return f"Student:\n{self.name}\n{self.surname}"  
 
