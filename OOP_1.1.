@@ -1,3 +1,4 @@
+
 class Student:
     def __init__(self, name, surname, gender):
         self.name = name
@@ -17,33 +18,17 @@ class Student:
         else:
             return 'Ошибка' 
 
-def get_shelves():
-  num_shelf = input('Введите номер документа: ')
-  for key, value in directories.items():
-    if num_shelf in value:
-      return (f"Документ лежит на полке: {key}")
-  return 'Такого документа не существует'
+    def av_grade(self):
+      grades_list = []
+      for key, value in self.grades.items():
+        for grade in value:
+          grades_list.append(grade)
+          av_grade = sum(grades_list)/len(grades_list)
+      return av_grade
+  
+    def __str__(self):
+        return f"Student:\n{self.name}\n{self.surname}\n{av_grade})"
 
-
-def average_grade(self, grade):
-        average_grade = []
-        courses = []
-        for key, value in self.grades.items():
-            average_grade += value
-            if key not in courses:
-                courses.append(key)
-            else:
-                courses += key
-        average = round((sum(average_grade)/len(average_grade)), 1)
-        if grade == 'grade':
-            return average
-        else grade == 'list courses':
-            return courses
-
-
-
-def __str__(self):
-    return f"Student:\n{self.name}\n{self.surname}"  
 
 
 class Mentor:
@@ -54,8 +39,11 @@ class Mentor:
         self.scores = {}
 
 class Lecturer(Mentor):
+
     def __str__(self):
         return f"Lecturer:\n{self.name}\n{self.surname}"
+
+
 
 class Reviewer(Mentor):
 
@@ -68,8 +56,9 @@ class Reviewer(Mentor):
         else:
             return 'Ошибка'
 
-def __str__(self):
-    return f"Reviewer:\n{self.name}\n{self.surname}"
+    def __str__(self):
+        return f"Reviewer:\n{self.name}\n{self.surname}"
+
 
 
 lecturer_1 = Lecturer('Some', 'Human')
@@ -92,9 +81,7 @@ reviewer_1.rate_hw(student_1, 'Python', 10)
 
 print(f'Оценки студента №1 по курсу "Python":', [student_1.grades])
 print(f'Оценки лектора №1 за лекции курсу "Python":', [lecturer_1.scores])
-print()
-print(__str__(reviewer_1))
-print()
-print(__str__(lecturer_1))
-print()
-print(__str__(student_1))
+
+print(reviewer_1)
+print(lecturer_1)
+print(student_1)
