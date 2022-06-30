@@ -23,12 +23,20 @@ class Student:
       for key, value in self.grades.items():
         for grade in value:
           grades_list.append(grade)
-          av_grade = sum(grades_list)/len(grades_list)
+      av_grade = round(sum(grades_list)/len(grades_list), 2)
       return av_grade
+
+
   
     def __str__(self):
-        return f"Student:\n{self.name}\n{self.surname}\n{av_grade})"
+      courses_in_progress = ', '.join(self.courses_in_progress)
+      finished_courses = ', '.join(self.finished_courses)
+      return f"Student:\n{self.name}\n{self.surname}\nСредняя оценка за домашние задания: {self.av_grade()}\nКурсы в процессе обучения: {courses_in_progress}\nЗавершенные курсы: {finished_courses}"
 
+
+    def __ge__(self, other):
+        if isinstance(other, Student):
+          return self.average_rating >= other.average_rating
 
 
 class Mentor:
@@ -40,9 +48,17 @@ class Mentor:
 
 class Lecturer(Mentor):
 
-    def __str__(self):
-        return f"Lecturer:\n{self.name}\n{self.surname}"
+  def av_score(self):
+    scores_list = []
+    for key, value in self.scores.items():
+      for score in value:
+        scores_list.append(score)
+    av_score = round(sum(scores_list)/len(scores_list), 2)
+    return av_score
 
+  
+  def __str__(self):
+      return f"Lecturer:\n{self.name}\n{self.surname}\nСредняя оценка за лекции: {self.av_score()}"
 
 
 class Reviewer(Mentor):
@@ -65,8 +81,9 @@ lecturer_1 = Lecturer('Some', 'Human')
 lecturer_1.courses_attached += ['Python'] 
 
 student_1 = Student('Ruoy', 'Eman', 'gender_1')
-student_1.courses_in_progress += ['Python']
-student_1.courses_attached += ['Python']
+student_1.courses_in_progress += ['Python', 'Github']
+student_1.courses_attached += ['Python', 'Github']
+student_1.finished_courses += ['Введение в программирование']
  
 student_1.rate_lect(lecturer_1, 'Python', 9)
 student_1.rate_lect(lecturer_1, 'Python', 7)
@@ -79,9 +96,48 @@ reviewer_1.rate_hw(student_1, 'Python', 8)
 reviewer_1.rate_hw(student_1, 'Python', 7)
 reviewer_1.rate_hw(student_1, 'Python', 10)
 
-print(f'Оценки студента №1 по курсу "Python":', [student_1.grades])
-print(f'Оценки лектора №1 за лекции курсу "Python":', [lecturer_1.scores])
+print(f'Оценки студента №1 по курсу Python:', student_1.grades)
+print(f'Оценки лектора №1 за лекции курсу Python:', lecturer_1.scores)
+print()
+#######################################
 
+lecturer_2 = Lecturer('Some2', 'Human2')
+lecturer_2.courses_attached += ['Github'] 
+
+student_2 = Student('John', 'Smith', 'gender_2')
+student_2.courses_in_progress += ['Python', 'Github']
+student_2.courses_attached += ['Python', 'Github']
+student_2.finished_courses += ['Введение в программирование']
+ 
+student_2.rate_lect(lecturer_2, 'Python', 5)
+student_2.rate_lect(lecturer_2, 'Python', 5)
+student_2.rate_lect(lecturer_2, 'Python', 5)
+
+reviewer_2 = Reviewer('Some2', 'Guy2')
+reviewer_2.courses_attached += ['Github']
+
+reviewer_2.rate_hw(student_2, 'Github', 5)
+reviewer_2.rate_hw(student_2, 'Github', 5)
+reviewer_2.rate_hw(student_2, 'Github', 5)
+
+print(f'Оценки студента №2 по курсу Python:', student_2.grades)
+print(f'Оценки лектора №2 за лекции курсу Python:', lecturer_2.scores)
+print()
+
+#######################################
 print(reviewer_1)
+print()
 print(lecturer_1)
+print()
 print(student_1)
+print()
+print()
+print(reviewer_2)
+print()
+print(lecturer_2)
+print()
+print(student_2)
+print()
+print(f'Сравнение студентов по средним оценкам:{student_1} >= {student_2})
+
+
