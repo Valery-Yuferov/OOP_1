@@ -34,10 +34,6 @@ class Student:
       return f"Student:\n{self.name}\n{self.surname}\nСредняя оценка за домашние задания: {self.av_grade()}\nКурсы в процессе обучения: {courses_in_progress}\nЗавершенные курсы: {finished_courses}"
 
 
-    def __ge__(self, other):
-        if isinstance(other, Student):
-          return self.average_rating >= other.average_rating
-
 
 class Mentor:
     def __init__(self, name, surname):
@@ -55,6 +51,8 @@ class Lecturer(Mentor):
         scores_list.append(score)
     av_score = round(sum(scores_list)/len(scores_list), 2)
     return av_score
+
+
 
   
   def __str__(self):
@@ -96,10 +94,8 @@ reviewer_1.rate_hw(student_1, 'Python', 8)
 reviewer_1.rate_hw(student_1, 'Python', 7)
 reviewer_1.rate_hw(student_1, 'Python', 10)
 
-print(f'Оценки студента №1 по курсу Python:', student_1.grades)
-print(f'Оценки лектора №1 за лекции курсу Python:', lecturer_1.scores)
-print()
-#######################################
+
+
 
 lecturer_2 = Lecturer('Some2', 'Human2')
 lecturer_2.courses_attached += ['Github'] 
@@ -120,11 +116,19 @@ reviewer_2.rate_hw(student_2, 'Github', 5)
 reviewer_2.rate_hw(student_2, 'Github', 5)
 reviewer_2.rate_hw(student_2, 'Github', 5)
 
+
+print(f'Оценки студента №1 по курсу Python:', student_1.grades)
+print(f'Оценки лектора №1 за лекции курсу Python:', lecturer_1.scores)
+print()
+
+
+
 print(f'Оценки студента №2 по курсу Python:', student_2.grades)
 print(f'Оценки лектора №2 за лекции курсу Python:', lecturer_2.scores)
 print()
 
-#######################################
+
+
 print(reviewer_1)
 print()
 print(lecturer_1)
@@ -137,7 +141,6 @@ print()
 print(lecturer_2)
 print()
 print(student_2)
-print()
-print(f'Сравнение студентов по средним оценкам:{student_1} >= {student_2})
+
 
 
