@@ -38,11 +38,11 @@ class Student:
       return f"Student:\n{self.name}\n{self.surname}\nСредняя оценка за домашние задания: {self.av_grade()}\nКурсы в процессе обучения: {courses_in_progress}\nЗавершенные курсы: {finished_courses}"
 
 
-def __lt__(self, other):
+    def __lt__(self, other):
         if not isinstance(other, Student):
             print('Нет такого студента')
             return
-        return self.av_grade > other.av_grade
+        return self.av_grade < other.av_grade
 
 
 
@@ -55,19 +55,19 @@ class Mentor:
 
 class Lecturer(Mentor):
 
-  def av_score(self):
-    scores_list = []
-    for key, value in self.scores.items():
-      for score in value:
-        scores_list.append(score)
-    av_score = round(sum(scores_list)/len(scores_list), 2)
-    return av_score
+    def av_score(self):
+        scores_list = []
+        for key, value in self.scores.items():
+            for score in value:
+                scores_list.append(score)
+        av_score = round(sum(scores_list)/len(scores_list), 2)
+        return av_score
 
 
 
   
-  def __str__(self):
-      return f"Lecturer:\n{self.name}\n{self.surname}\nСредняя оценка за лекции: {self.av_score()}"
+    def __str__(self):
+        return f"Lecturer:\n{self.name}\n{self.surname}\nСредняя оценка за лекции: {self.av_score()}"
 
 
 class Reviewer(Mentor):
@@ -147,5 +147,5 @@ print(lecturer_2)
 print()
 print(student_2)
 
-print(student_1<student_2)
+student_1 < student_2
 
