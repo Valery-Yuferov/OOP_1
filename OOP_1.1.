@@ -42,7 +42,7 @@ def __lt__(self, other):
         if not isinstance(other, Student):
             print('Нет такого студента')
             return
-        return self.average_grade > other.average_grade
+        return self.av_grade > other.av_grade
 
 
 
