@@ -147,5 +147,5 @@ print(lecturer_2)
 print()
 print(student_2)
 
-student_1 < student_2
+student_1.av_grade < student_2.av_grade
 
