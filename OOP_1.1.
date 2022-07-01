@@ -1,4 +1,8 @@
 
+
+
+
+
 class Student:
     def __init__(self, name, surname, gender):
         self.name = name
@@ -32,6 +36,13 @@ class Student:
       courses_in_progress = ', '.join(self.courses_in_progress)
       finished_courses = ', '.join(self.finished_courses)
       return f"Student:\n{self.name}\n{self.surname}\nСредняя оценка за домашние задания: {self.av_grade()}\nКурсы в процессе обучения: {courses_in_progress}\nЗавершенные курсы: {finished_courses}"
+
+
+def __lt__(self, other):
+        if not isinstance(other, Student):
+            print('Нет такого студента')
+            return
+        return self.average_grade > other.average_grade
 
 
 
@@ -120,14 +131,9 @@ reviewer_2.rate_hw(student_2, 'Github', 5)
 print(f'Оценки студента №1 по курсу Python:', student_1.grades)
 print(f'Оценки лектора №1 за лекции курсу Python:', lecturer_1.scores)
 print()
-
-
-
 print(f'Оценки студента №2 по курсу Python:', student_2.grades)
 print(f'Оценки лектора №2 за лекции курсу Python:', lecturer_2.scores)
 print()
-
-
 
 print(reviewer_1)
 print()
@@ -135,12 +141,11 @@ print(lecturer_1)
 print()
 print(student_1)
 print()
-print()
 print(reviewer_2)
 print()
 print(lecturer_2)
 print()
 print(student_2)
 
-
+print(student_1<student_2)
 
