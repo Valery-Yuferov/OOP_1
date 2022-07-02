@@ -8,6 +8,7 @@ class Student:
         self.courses_in_progress = []
         self.courses_attached = []
         self.grades = {}
+
         
     def rate_lect(self, lecturer, lecture, score):
         if isinstance(lecturer, Lecturer) and lecture in self.courses_attached and lecture in self.courses_in_progress:
@@ -18,6 +19,7 @@ class Student:
         else:
             return 'Ошибка' 
 
+
     def av_grade(self):
       grades_list = []
       for key, value in self.grades.items():
@@ -25,7 +27,6 @@ class Student:
           grades_list.append(grade)
       av_grade = round(sum(grades_list)/len(grades_list), 2)
       return av_grade
-
 
   
     def __str__(self):
@@ -41,7 +42,6 @@ class Student:
         return self.av_grade() < other.av_grade()
 
 
-
 class Mentor:
     def __init__(self, name, surname):
         self.name = name
@@ -49,7 +49,9 @@ class Mentor:
         self.courses_attached = []
         self.scores = {}
 
+
 class Lecturer(Mentor):
+
 
     def av_score(self):
         scores_list = []
@@ -60,10 +62,14 @@ class Lecturer(Mentor):
         return av_score
 
 
-
-  
     def __str__(self):
         return f"Lecturer:\n{self.name}\n{self.surname}\nСредняя оценка за лекции: {self.av_score()}"
+
+    def __lt__(self, other):
+        if not isinstance(other, Lecturer):
+            print('Нет такого лектора')
+            return
+        return self.av_score() < other.av_score()
 
 
 class Reviewer(Mentor):
@@ -77,9 +83,9 @@ class Reviewer(Mentor):
         else:
             return 'Ошибка'
 
+
     def __str__(self):
         return f"Reviewer:\n{self.name}\n{self.surname}"
-
 
 
 lecturer_1 = Lecturer('Some', 'Human')
@@ -100,8 +106,6 @@ reviewer_1.courses_attached += ['Python']
 reviewer_1.rate_hw(student_1, 'Python', 8)
 reviewer_1.rate_hw(student_1, 'Python', 7)
 reviewer_1.rate_hw(student_1, 'Python', 10)
-
-
 
 
 lecturer_2 = Lecturer('Some2', 'Human2')
@@ -142,7 +146,10 @@ print()
 print(lecturer_2)
 print()
 print(student_2)
+print()
+print(f'Оценки студента №1 выше, чем оценки студента №2:', student_1<student_2)
+print()
+print(f'Оценки лектора №1 выше, чем оценки лектора №2:', lecturer_1<lecturer_2)
 
-print(student_1<student_2)
 
 
