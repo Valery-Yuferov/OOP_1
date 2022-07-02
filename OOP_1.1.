@@ -1,8 +1,4 @@
 
-
-
-
-
 class Student:
     def __init__(self, name, surname, gender):
         self.name = name
@@ -42,7 +38,7 @@ class Student:
         if not isinstance(other, Student):
             print('Нет такого студента')
             return
-        return self.av_grade < other.av_grade
+        return self.av_grade() < other.av_grade()
 
 
 
@@ -147,5 +143,6 @@ print(lecturer_2)
 print()
 print(student_2)
 
-student_1.av_grade < student_2.av_grade
+print(student_1<student_2)
+
 
