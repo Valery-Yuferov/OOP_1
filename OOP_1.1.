@@ -109,30 +109,30 @@ reviewer_1.rate_hw(student_1, 'Python', 10)
 
 
 lecturer_2 = Lecturer('Some2', 'Human2')
-lecturer_2.courses_attached += ['Github'] 
+lecturer_2.courses_attached += ['Python'] 
 
 student_2 = Student('John', 'Smith', 'gender_2')
 student_2.courses_in_progress += ['Python', 'Github']
 student_2.courses_attached += ['Python', 'Github']
 student_2.finished_courses += ['Введение в программирование']
  
-student_2.rate_lect(lecturer_2, 'Github', 5)
-student_2.rate_lect(lecturer_2, 'Github', 5)
-student_2.rate_lect(lecturer_2, 'Github', 5)
+student_2.rate_lect(lecturer_2, 'Python', 5)
+student_2.rate_lect(lecturer_2, 'Python', 5)
+student_2.rate_lect(lecturer_2, 'Python', 5)
 
 reviewer_2 = Reviewer('Some2', 'Guy2')
-reviewer_2.courses_attached += ['Github']
+reviewer_2.courses_attached += ['Python']
 
-reviewer_2.rate_hw(student_2, 'Github', 5)
-reviewer_2.rate_hw(student_2, 'Github', 5)
-reviewer_2.rate_hw(student_2, 'Github', 5)
+reviewer_2.rate_hw(student_2, 'Python', 5)
+reviewer_2.rate_hw(student_2, 'Python', 5)
+reviewer_2.rate_hw(student_2, 'Python', 5)
 
 
 print(f'Оценки студента №1 по курсу Python:', student_1.grades)
 print(f'Оценки лектора №1 за лекции курсу Python:', lecturer_1.scores)
 print()
-print(f'Оценки студента №2 по курсу Github:', student_2.grades)
-print(f'Оценки лектора №2 за лекции курсу Github:', lecturer_2.scores)
+print(f'Оценки студента №2 по курсу Python:', student_2.grades)
+print(f'Оценки лектора №2 за лекции курсу Python:', lecturer_2.scores)
 print()
 
 print(reviewer_1)
