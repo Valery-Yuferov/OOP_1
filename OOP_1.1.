@@ -42,19 +42,6 @@ class Student:
         return self.av_grade() < other.av_grade()
 
 
-    def course_av_grade(students_list, course):
-        students_list = [student_1, student_2]
-        total = 0
-        counter = 0
-        for student in students_list:
-            if course in student.courses_in_progress:
-              student_course_av = sum(student.grades[course])/len(student.grades[course])
-              total += student_course_av
-              counter += 1
-            if counter == 0:
-              return 'Нет студентов, изучающих данный курс.'
-        return course_av_grade()
-      
 
 class Mentor:
     def __init__(self, name, surname):
@@ -84,19 +71,6 @@ class Lecturer(Mentor):
             print('Нет такого лектора')
             return
         return self.av_score() < other.av_score()
-
-    def course_av_score(lecturers_list, course):
-        lecturers_list = [lecturer_1, lecturer_2]
-        total = 0
-        counter = 0
-        for lecturer in lecturers_list:
-            if course in lecturer.courses_attached:
-              lecturer_course_av = sum(lecturer.scores[course])/len(lecturer.scores[course])
-              total += lecturer_course_av
-              counter += 1
-            if counter == 0:
-              return 'Нет лекторов, читающих  данный курс.'
-        return course_av_score()
 
 
 class Reviewer(Mentor):
@@ -178,8 +152,21 @@ print(f'Оценки студента №1 выше, чем оценки сту�
 print(f'Оценки лектора №1 выше, чем оценки лектора №2:', lecturer_1<lecturer_2)
 print()
 
-print(course_av_grade(students_list, course))
-print(course_av_score(lecturers_list, course))
 
+students_list = [student_1, student_2]
 
+def course_av_grade(students_list, course):
+
+  total = 0
+  counter = 0
+  for student in students_list:
+    if course in student.courses_in_progress:
+      student_course_av = sum(student.grades[course])/len(student.grades[course])
+      total += student_course_av
+      counter += 1
+      if counter == 0:
+        return 'Нет студентов, изучающих данный курс.'
+  return f'Средняя оценка стедентов, изучающих курс Python:  {total/counter}'      
+
+course_av_grade(students_list, course)
 
