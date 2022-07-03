@@ -166,7 +166,7 @@ def course_av_grade(students_list, course):
       counter += 1
       if counter == 0:
         return 'Нет студентов, изучающих данный курс.'
-  return f'Средняя оценка стедентов, изучающих курс Python:  {total/counter}'      
+  return f'Средняя оценка студентов, изучающих курс Python:  {total/counter}'      
 
 course_av_grade(students_list, course)
 
